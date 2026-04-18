@@ -1,0 +1,416 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #000 0%, #7e8c87 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: linear-gradient(120deg, #000000 0%, #222825 60%, #7e8c87 100%);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    width: 100%;
+    box-sizing: border-box;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.nav-menu {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-menu a:hover {
+    color: #1dd1a1;
+}
+.btn-start {
+    background-color: #1dd1a1;
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+.btn-start:hover {
+    background: #0eb88d;
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero-title {
+    font-size: 80px;
+    font-weight: 900;
+    margin-bottom: 0;
+    letter-spacing: -2px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.hero-subtitle {
+    font-size: 64px;
+    color: #1dd1a1;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.hero-description {
+    font-size: 20px;
+    color: #b0bec5;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn-primary {
+    background-color: #1dd1a1;
+    color: #fff;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-primary:hover {
+    background-color: #10ac84;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    padding: 18px 40px;
+    border: 2px solid #b0bec5;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-secondary:hover {
+    border-color: #1dd1a1;
+    color: #1dd1a1;
+}
+
+/* Hero header para calendario */
+.calendario-header-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-bottom: -0.5rem;
+}
+#calendario-funcional {
+    margin-top: 0;
+}
+.calendario-btn-plan {
+    color: #16b86a;
+    border: 2px solid #16b86a;
+    border-radius: 2rem;
+    padding: 0.5rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    transition: background 0.2s, color 0.2s;
+}
+.calendario-btn-plan:hover {
+    background: #16b86a;
+    color: #fff;
+}
+.calendario-hero-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #151c24;
+    margin: 0 0 1.2rem 0;
+    text-align: center;
+}
+.calendario-hero-green {
+    color: #16b86a;
+    font-weight: 900;
+}
+.calendario-hero-desc {
+    color: #6b7686;
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+}
+@media (max-width: 700px) {
+    .calendario-hero-title {
+        font-size: 2.1rem;
+    }
+    .calendario-header-hero {
+        margin-top: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    .calendario-btn-plan {
+        font-size: 0.95rem;
+        padding: 0.4rem 1.2rem;
+    }
+    .calendario-hero-desc {
+        font-size: 1rem;
+    }
+}
+
+/* Layout principal del calendario */
+.calendario-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+.calendario-titulo {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+}
+#calendario-funcional {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1.2rem;
+    background: #fff;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 16px #0000000a;
+    max-width: 700px;
+    width: 100%;
+}
+.calendario-mes-header {
+    grid-column: span 7;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: #111;
+}
+.cal-dia-header {
+    color: #b0bec5;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Calendario funcional en calendario.html */
+.cal-dia-funcional {
+    aspect-ratio: 1 / 1;
+    width: 3.2rem;
+    height: 3.2rem;
+    min-width: 2.2rem;
+    min-height: 2.2rem;
+    background: #e9f7ef;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #10ac84;
+    border: 2px solid transparent;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    box-sizing: border-box;
+    margin: 0 auto;
+    cursor: pointer;
+    user-select: none;
+}
+.cal-dia-funcional:hover {
+    background: #eceff1;
+    color: #374151;
+}
+
+/* Layout contenedor calendario + resumen */
+.calendario-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1050px;
+    justify-content: center;
+}
+
+/* Tarjeta resumen del mes */
+.resumen-mes {
+    background: #1dd1a1;
+    border-radius: 1.4rem;
+    padding: 2rem 2rem 1.5rem 2rem;
+    min-width: 240px;
+    max-width: 280px;
+    width: 100%;
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(29,209,161,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-self: flex-start;
+    margin-top: 0;
+}
+.resumen-titulo {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+    color: #fff;
+}
+.resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.resumen-valor {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.resumen-barra-bg {
+    background: rgba(255,255,255,0.35);
+    border-radius: 1rem;
+    height: 8px;
+    width: 100%;
+    margin-top: 0.6rem;
+    overflow: hidden;
+}
+.resumen-barra {
+    background: #fff;
+    height: 100%;
+    border-radius: 1rem;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+/* Leyenda selector */
+.leyenda-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 1.4rem 1.6rem;
+    min-width: 240px;
+    max-width: 280px;
+    width: 100%;
+    box-shadow: 0 2px 12px #0000000d;
+    border: 1.5px solid #e8edf2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.leyenda-titulo {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #151c24;
+    margin-bottom: 0.3rem;
+}
+.leyenda-opcion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 0.7rem;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: #374151;
+    text-align: left;
+    transition: border 0.15s, background 0.15s;
+    width: 100%;
+}
+.leyenda-opcion:hover {
+    background: #f3f4f6;
+}
+.leyenda-opcion.activo-seleccionado {
+    border: 2px solid #1dd1a1;
+    background: #f0fdf8;
+}
+.leyenda-color {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: inline-block;
+}
+.alta-intensidad  { background: #1dd1a1; }
+.media-intensidad { background: #7be0c8; }
+.baja-intensidad  { background: #c8f5eb; }
+.descanso-color   { background: #ffd6d6; }
+
+/* Estados de los días según tipo */
+.cal-dia-funcional.tipo-alta {
+    background: #1dd1a1 !important;
+    color: #fff !important;
+    border: 2px solid #10ac84;
+}
+.cal-dia-funcional.tipo-media {
+    background: #7be0c8 !important;
+    color: #0e7a60 !important;
+    border: 2px solid #4dcbb5;
+}
+.cal-dia-funcional.tipo-baja {
+    background: #c8f5eb !important;
+    color: #0e7a60 !important;
+    border: 2px solid #7be0c8;
+}
+.cal-dia-funcional.tipo-descanso {
+    background: #ffd6d6 !important;
+    color: #c0392b !important;
+    border: 2px solid #f5a0a0;
+}
+
+@media (max-width: 900px) {
+    .calendario-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .resumen-mes,
+    .leyenda-card {
+        max-width: 700px;
+        width: 100%;
+    }
+}
+
+
+
+
