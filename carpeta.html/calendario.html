@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calendario</title>
     <link rel="stylesheet" href="../estilos.css">
 </head>
 <body style="background:#fff;">
     <nav class="navbar">
         <div class="logo">
-            <img src="../img/logo gym.png" alt="Logo" width="48" height="48" style="background:#fff;border-radius:12px;">
+            <a href="main.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
+            <img src="../img/logo gym.png" alt="Logo" style="width:3.5rem;height:auto;background:#fff;">
             <span>FitTrack</span>
+            </a>
         </div>
         <ul class="nav-menu">
             <li><a href="calendario.html">Calendario</a></li>
-            <li><a href="semanal.html">Semanal</a></li>
-            <li><a href="mensual.html">Mensual</a></li>
-            <li><a href="anual.html">Anual</a></li>
-            <li><a href="rutina.html">&#128197 Rutina Semanal</a></li>
+            <li><a href="rutina.html">Rutina Semanal</a></li>
         </ul>
-        <button class="btn-start">Empezar hoy</button>
+        <button class="btn-dark-mode" id="btn-dark-mode" title="Modo oscuro"><img src="../img/luna.png" alt="Modo oscuro" style="width:1.2rem;height:1.2rem;display:block;"></button>
     </nav>
     <div class="titulo calendario-header-hero">
-        <a class="calendario-btn-plan" href="#">PLANIFICA TU ENTRENAMIENTO</a>
         <h1 class="calendario-hero-title">
             Calendario de <span class="calendario-hero-green">Ejercicio</span>
         </h1>
@@ -35,7 +33,11 @@
         <h1 class="calendario-titulo">Calendario</h1>
         <div class="calendario-content">
         <div id="calendario-funcional">
-            <div class="calendario-mes-header">Abril 2026</div>
+            <div class="calendario-mes-header">
+                <button class="cal-nav-btn" id="cal-prev">&#8249;</button>
+                <span id="cal-mes-label"></span>
+                <button class="cal-nav-btn" id="cal-next">&#8250;</button>
+            </div>
             <div class="cal-dia-header">Dom</div>
             <div class="cal-dia-header">Lun</div>
             <div class="cal-dia-header">Mar</div>
@@ -43,39 +45,10 @@
             <div class="cal-dia-header">Jue</div>
             <div class="cal-dia-header">Vie</div>
             <div class="cal-dia-header">Sáb</div>
-            <!-- Días del mes, los vacíos son celdas en blanco para cuadrar el inicio -->
-            <div></div><div></div><div></div>
-            <div class="cal-dia-funcional">1</div>
-            <div class="cal-dia-funcional">2</div>
-            <div class="cal-dia-funcional">3</div>
-            <div class="cal-dia-funcional">4</div>
-            <div class="cal-dia-funcional">5</div>
-            <div class="cal-dia-funcional">6</div>
-            <div class="cal-dia-funcional">7</div>
-            <div class="cal-dia-funcional">8</div>
-            <div class="cal-dia-funcional">9</div>
-            <div class="cal-dia-funcional">10</div>
-            <div class="cal-dia-funcional">11</div>
-            <div class="cal-dia-funcional">12</div>
-            <div class="cal-dia-funcional">13</div>
-            <div class="cal-dia-funcional">14</div>
-            <div class="cal-dia-funcional">15</div>
-            <div class="cal-dia-funcional">16</div>
-            <div class="cal-dia-funcional">17</div>
-            <div class="cal-dia-funcional">18</div>
-            <div class="cal-dia-funcional">19</div>
-            <div class="cal-dia-funcional">20</div>
-            <div class="cal-dia-funcional">21</div>
-            <div class="cal-dia-funcional">22</div>
-            <div class="cal-dia-funcional">23</div>
-            <div class="cal-dia-funcional">24</div>
-            <div class="cal-dia-funcional">25</div>
-            <div class="cal-dia-funcional">26</div>
-            <div class="cal-dia-funcional">27</div>
-            <div class="cal-dia-funcional">28</div>
-            <div class="cal-dia-funcional">29</div>
-            <div class="cal-dia-funcional">30</div>
+            <div id="cal-dias-grid" style="display:contents;"></div>
         </div>
+        <!-- Panel lateral: resumen + leyenda -->
+        <div class="calendario-panel">
         <!-- Resumen del mes -->
         <div class="resumen-mes" id="resumen-mes">
             <h2 class="resumen-titulo">Resumen del mes</h2>
@@ -97,18 +70,14 @@
         </div>
         <!-- Leyenda / selector de tipo de día -->
         <div class="leyenda-card">
-            <h3 class="leyenda-titulo">Leyenda</h3>
-            <button class="leyenda-opcion activo-seleccionado" data-tipo="alta" title="Alta intensidad">
+            <h3 class="leyenda-titulo">Elección</h3>
+            <button class="leyenda-opcion activo-seleccionado" data-tipo="seleccion" title="Selección">
+                <span class="leyenda-color seleccion-color"></span>
+                Selección
+            </button>
+            <button class="leyenda-opcion" data-tipo="alta" title="Cumplir">
                 <span class="leyenda-color alta-intensidad"></span>
-                Alta intensidad
-            </button>
-            <button class="leyenda-opcion" data-tipo="media" title="Media intensidad">
-                <span class="leyenda-color media-intensidad"></span>
-                Media intensidad
-            </button>
-            <button class="leyenda-opcion" data-tipo="baja" title="Baja intensidad">
-                <span class="leyenda-color baja-intensidad"></span>
-                Baja intensidad
+                Cumplir
             </button>
             <button class="leyenda-opcion" data-tipo="descanso" title="Descanso">
                 <span class="leyenda-color descanso-color"></span>
@@ -116,7 +85,30 @@
             </button>
         </div>
         </div>
+        </div>
+        <!-- Ejercicios del día -->
+        <div class="ejercicios-dia-card" id="ejercicios-dia-card">
+            <div class="ejercicios-dia-header">
+                <div>
+                    <h2 class="ejercicios-dia-titulo">Ejercicios del día</h2>
+                    <p class="ejercicios-dia-fecha" id="ejercicios-dia-fecha"></p>
+                </div>
+            </div>
+            <div class="ejercicios-dia-empty" id="ejercicios-dia-empty">
+                <span class="ejercicios-dia-icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="#c8d0d8">
+                        <circle cx="13.5" cy="3.5" r="1.5"/>
+                        <path d="M9.9 8.1L6 22h2.1l2.7-7 2.2 2V22H15v-8.5l-2.3-2.1.7-3.4C14.6 10 16.4 11 18 11V9c-1.4 0-2.9-.8-3.7-1.9L13 5.9c-.4-.5-.9-.9-1.6-.9-.3 0-.5.1-.8.1L5 7v4h2V8.3l2.9-.2z"/>
+                    </svg>
+                </span>
+                <p class="ejercicios-dia-empty-titulo">Sin ejercicios registrados</p>
+                <p class="ejercicios-dia-empty-sub">Haz clic en "Agregar ejercicio" para empezar</p>
+            </div>
+        </div>
     </main>
+    <footer class="footer-cal">
+        <p>¿Consultas o sugerencias? <a href="mailto:martinezluca446@gmail.com">martinezluca446@gmail.com</a></p>
+    </footer>
     <script src="../script.js"></script>
 </body>
 </body>

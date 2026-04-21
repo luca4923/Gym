@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitTrack - Entrena sin límites</title>
+    <title>FitTrack</title>
     <link rel="stylesheet" href="../estilos.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="../img/logo gym.png" alt="Logo" width="36" height="36">
+            <img src="../img/logo gym.png" alt="Logo" style="width:3.5rem;height:auto;">
             <span>FitTrack</span>
         </div>
         <ul class="nav-menu">
             <li><a href="calendario.html">Calendario</a></li>
-            <li><a href="semanal.html">Semanal</a></li>
-            <li><a href="mensual.html">Mensual</a></li>
-            <li><a href="anual.html">Anual</a></li>
-            <li><a href="rutina.html">&#128197 Rutina Semanal</a></li>
+
+            <li><a href="rutina.html">Rutina Semanal</a></li>
         </ul>
-        <button class="btn-start">Empezar hoy</button>
     </nav>
     <main>
         <section class="hero">
@@ -27,8 +24,8 @@
             <h2 class="hero-subtitle">sin límites</h2>
             <p class="hero-description">Registra cada sesión, visualiza tu progreso diario,<br>semanal, mensual y anual. Tu mejor versión<br>comienza hoy.</p>
             <div class="hero-buttons">
-                <button class="btn-primary">Comenzar ahora <span>&rarr</span></button>
-                <button class="btn-secondary">Ver calendario</button>
+                <button class="btn-primary" onclick="location.href='rutina.html'">Comenzar ahora </button>
+                <button class="btn-secondary" onclick="location.href='calendario.html'">Ver calendario</button>
             </div>
         </section>
         
